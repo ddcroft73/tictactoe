@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+
+  <audio id="audio" src="sounds/click_.mp3" autoplay="false" ></audio>
+    <audio id="audio2" src="sounds/click_low.wav" autoplay="false" ></audio>
+    
+    
+    <title>Tica-Taca-T0e</title>
+</head>
+
+<body>
+<!-- some html structute to the game, pace the board in the middle and make it responsive.-->
+
+<div class="container">
+
+    <div class="match-container" >        
+        <div class="match-info">Match: 0   Game: 0</div>
+    </div>
+
+    <div class="header">
+        <div class="score-playerone">Player1 - score</div>
+        <div class="score-playertwo">Player2\bot - score</div>
+    </div>
+
+
+    <div class="main-container">
+        <div class="game-container">
+            <div class="game-board">
+                <!--board rendered with JS-->
+                <div class="intro-container">
+                    <div class ='intro'>
+                        Click "Start Match" to start a new match.<br>
+                        "New Game" to play another Game. A match consists of 5 games
+                        but may begin anew whenever you please.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        
+        <div class="start-game" id="start-game">Start Match</div>
+        <div class="new-game" id="new-game">New Game</div>
+
+    </div>
+</div>
+
+<!--Player creation modal-->
+
+<div class="modal" id="modal">
+    <div class="modal-content-container">  
+        <div class="modal-content">
+
+            <div class="close-container">                 
+                <div class="modal-header">Who dat?</div>          
+                <span class="close">&times;</span>
+             </div> 
+
+            <div class="form-container">
+                <div class="player-container"> 
+                    <label for="player1">Player One:</label>
+                    <input id="player1" type="text" placeholder="Enter Name"> 
+                </div>
+                <div class="player-container">                    
+                    <label for="player2" class="player2">Player Two:</label>                    
+                    <input id="player2" type="text" placeholder="Name or bot for AI">
+                    <span class="tooltip-bot-info">To play against the computer enter "bot".</span>
+                </div>
+                <div class="button-container">
+                    <div class="btn" id="cancel">Cancel</div>
+                    <div class="btn" id="create">Play</div>
+                </div>
+
+            </div>
+
+        </div>    
+    </div>
+</div>
+<!--Logic for the game-->    
+<script type="text/javascript" src="./scripts/logic.js"></script>
+<script type="text/javascript" src="./scripts/DOM.js"></script>
+<script type="text/javascript" src="./scripts/util.js"></script>
+<script type="text/javascript" src="./scripts/AI.js"></script>
+</body>
+</html>
