@@ -462,25 +462,27 @@ body {
     }    
 }*/
 
-
 /* if the screen is mobile*/
+/* modified*/
 @media screen and (max-width: 415px) {
     .main-container {
-        width: 300px;
-        height: 300px;
+        width: 360px;
+        height: 360px;
     }   
      .game-container {
-        height: 254px; 
-        width: 254px;
+        height: 304px; 
+        width: 304px;
+        border: 0px solid white;
+
     }
     .square {
-        font-size: 85px;  
-        border: 1px solid white;
-        height: 84px;
-        width: 84px;
+        font-size: 75px;  
+        height: 101px;
+        width: 101px;
+        line-height: 105px;
     }
     .header {    
-        width: 300px;
+        width: 350px;
         margin-bottom: 5px;
     }
     .modal-content-container {
@@ -490,7 +492,16 @@ body {
     }    
 
     .match-info{   
-        width: 300px;
-        margin-bottom: 5px;
+        width: 350px;
+        margin-bottom: 5px;        
+        font-size:14px;
     }
+
+    .score-playerone {
+        font-size:14px;
+    } 
+    .score-playertwo {
+        font-size:14px;
+    }
+
 }
