@@ -46,8 +46,6 @@ function createPlayers(players) {
         playerTwo = createPlayer(players.two, 'person', 'O'); 
     }    
 
-    //console.log(playerOne.name, playerTwo.name)
-
     gameScore.setPlayerNames(playerOne.name, playerTwo.name)
     gameScore.updateMatch();    
 }
@@ -206,6 +204,12 @@ const createPlayer = (name, type, weapon) => {
     let direction;
     let win;
 
+    // is this the bot?
+    if(type.toLowerCase() === 'bot') {
+        // create the AI object then...
+        bot = createAI();
+    }
+
     const winingCombos = {
         vertcal: ['036', '147', '258'],
         horiz:   ['012', '345', '678'],
@@ -220,7 +224,9 @@ const createPlayer = (name, type, weapon) => {
         disablePointer(3300);
         console.log(`Winnner: ${player} ${direction}: ${combo}`);
     }
-
+    
+    // each player checks to see if it won
+    //
     // sort the moves and join them into a string, 
     // loop through the winning combos in the object
     // if the moves string matches one of the winningCombos... Player wins.
@@ -228,7 +234,7 @@ const createPlayer = (name, type, weapon) => {
         let winner = false;        
 
         let movesString = moves.sort().join('');
-        
+
         for (let key in winingCombos) {
             for (let item in winingCombos[key]){
                 for (let i = 0; i < moves.length; i++){
@@ -243,17 +249,9 @@ const createPlayer = (name, type, weapon) => {
         return winner;
     }
     
-    // given the data on the board, try to make the best move
-    function calculateMove() {
-        let array = [];
-        // whats on the board;
-        gameBoard.boardArray.forEach((square) => {
-            array.push(square.textContent)
-        });
-        console.log(array)
-        //console.log(gameBoard.boardArray[].textContent)
-        // method should instigate the move as if it were a person.
-    }
+    // the start of developiong AI
+
+    
 
     return {
 
@@ -263,28 +261,26 @@ const createPlayer = (name, type, weapon) => {
        // wins: [],
         
         move: (squareNum) => {
+            // makethe appro
             gameBoard.boardArray[squareNum].textContent =  weapon;
             moves.push(squareNum)
+            
+            // have all the moves been made?
 
+            const _totalMoves = match.totalMoves();
             const won = checkForWin();
             if (won) {                
                 boastWin(name, direction, winningCombo)
-                setTimeout(() => match.newGame(), 3000);  
-                gameScore.updateScores(weapon);                
-            } else {
-               
+                match.nextRound(weapon);
+            } else if ((_totalMoves === 9)){
+                match.nextRound(weapon);
             }
         },
 
         clear: () => {
             // clear variables for a new game.
             moves = [];
-        }, 
-
-        calcMove: () => calculateMove()
-        
-
-        
+        }        
     };
 }
 
@@ -294,6 +290,7 @@ const createMatch = () => {
 
     let _gameCnt = 0;      // runs as long as the match is alive.
     let playerMoving = 0;
+    let _totalMoves = 0;
 
     function _newGame() {    
         // is it though?      
@@ -306,6 +303,7 @@ const createMatch = () => {
         }   
     }
     
+    // returns true if the game has started.
     function gameStarted() {
         let res = true
         for(let i = 0; i < gameBoard.boardArray.length; i++) {
@@ -315,21 +313,23 @@ const createMatch = () => {
         }
     }
 
-    // the game should know whos turn it is,  and make the appropriate move.
+    // the game should know whos turn it is, and record the move for the player. Game is responsoble for
+    // facilitaintg the flow of the game.
     return {
-        // Move the appropriate player
+        // Move the appropriate player, this is just a recording device after the move is made om the board
         move: (square) => {
-            playerMoving++
+            playerMoving++;
+            _totalMoves++;
             if (playerMoving % 2 === 0){
                playSound('click');
                playerTwo.move(square);
             } else{ 
+
                playSound('splat');
                playerOne.move(square);      
-
-               console.log(playerTwo.type)
+               // game senses that its time for the BOT to move... move it
                if(playerTwo.type === 'bot')  {
-                 console.log('call the aI to make move. ')
+                bot.move();
               }
             }
         },
@@ -346,7 +346,14 @@ const createMatch = () => {
             _newGame();
         },
 
-        gameCnt: () => _gameCnt
+        nextRound: (player) => {
+            // pause 3 seconds to let players remenice (sp?)
+            setTimeout(() => match.newGame(), 3000);  
+            gameScore.updateScores(player)
+        },
+
+        gameCnt: () => _gameCnt,
+        totalMoves: () => _totalMoves
     };
 }
 
