@@ -214,7 +214,7 @@ body {
 
 .game-container {
     background-color: var(--game-bg-color-dark);
-    border: 1px solid white;
+    border: 1px solid yellow;
     height: 314px; 
     width: 314px;
 }
@@ -229,10 +229,10 @@ body {
 
 .intro-container {    
     text-align:center;    
-    margin: 30px;
+    margin: 10px;
     border: 1px solid gray;
-    border-radius: 5px;
-    width: 300px;
+    border-radius: 15px;
+    width: 400px;
     text-shadow: 3px 3px 3px  rgba(0, 0, 0, 0.5);
 
 }
@@ -241,6 +241,7 @@ body {
     font-weight: 500;
     padding: 10px;
     color:rgb(211, 140, 9);
+    font-size:14px;
 }
 
 .square {
@@ -249,7 +250,7 @@ body {
     font-size: 98px;
     font-weight: 600;
     text-align: center;
-    border: 1px solid white;
+    border: 1px solid orange;
     height: 104px;
     width: 104px; box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.6), 0 0px 0px 0 rgba(27, 28, 27, 0.9);
    

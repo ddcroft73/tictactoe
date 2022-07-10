@@ -30,7 +30,7 @@ function initMatch(players) {
 function createPlayers(players) {
     //if there are no names entered or one name and not "bot", assign
     // the default
-    console.log(`Player1: ${players.one} Player2: ${players.two}`)
+    //console.log(`Player1: ${players.one} Player2: ${players.two}`)
 
     if (players.one === '') {
         playerOne = createPlayer('Player One', 'person', 'X');
@@ -42,15 +42,12 @@ function createPlayers(players) {
         playerTwo = createPlayer('Player Two', 'person', 'O');
     } else if (players.two === 'Bot'){
         playerTwo = createPlayer('AI', 'bot', 'O'); 
-    }
+    } else {
+        playerTwo = createPlayer(players.two, 'person', 'O'); 
+    }    
 
+    //console.log(playerOne.name, playerTwo.name)
 
-/*
-    } else if (players.two === 'bot'){
-        console.log('create AI')
-        playerTwo = createPlayer('AI', 'bot', 'O');
-    }
-*/
     gameScore.setPlayerNames(playerOne.name, playerTwo.name)
     gameScore.updateMatch();    
 }

@@ -31,10 +31,10 @@ function playSound(clip) {
     let sound;
     if (clip ==='click'){
        sound = document.getElementById("audio");
-       sound.play();
+    //   sound.play();
     } else {
         sound = document.getElementById("audio2");
-       sound.play();
+    //  sound.play();
     }
     
 }
