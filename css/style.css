@@ -1,0 +1,496 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* CSS for the game layout */
+:root {
+    --bg-color-dark: rgb(27, 26, 25);
+    
+    --main-bg-color-dark: rgb(55, 51, 51);
+    --game-bg-color-dark: rgb(78, 75, 75);
+    --square-bg-color-dark: rgb(105, 101, 101);
+    --hilite-color-dark: rgb(62, 60, 60);
+    --font-color-dark:  rgb(173, 166, 157);  
+
+
+    --main-bg-color-lite: rgb(149, 144, 138);
+    --game-bg-color-lite: rgb(212, 208, 208);
+    --square-bg-color-lite: rgb(252, 248, 248);
+    --font-color-lite:  rgb(27, 26, 25);  
+  }
+
+* {
+    border: 0px solid white;
+    box-sizing: border-box;
+}
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* make body a flex container to allow centerinf of the main-container */
+body {
+    background-color: var(--bg-color-dark);
+}
+
+.container {    
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;   /* center the main cntainer */
+    align-items: center;
+
+}
+.header {
+    display: flex;
+    flex: 1;
+    width: 500px;
+    height: 50px;
+    border: 0px solid white;
+    margin-bottom: 10px;
+    gap: 10px;
+    
+}
+
+.score-playerone, .score-playertwo {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+
+    flex: 1 100%;
+    border: 1px solid white;
+    height: 35px;
+    font-family: 'Roboto', sans-serif;
+    color: var(--font-color-dark);
+    box-shadow: 10px 8px 10px 0px rgba(0, 0, 0, 0.9), 0 0px 0px 0 rgba(27, 28, 27, 0.9);
+    border-radius: 5px;
+    text-shadow: 3px 8px 3px  rgba(0, 0, 0, 0.5);
+}
+
+.score-name-one {
+    color: yellow;
+    font-weight:bold;
+}
+.score-name-two {
+    color: orange;
+    font-weight:bold;
+}
+
+.match-container {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+
+    border: 1px solid white;
+    height: 35px;
+    font-family: 'Roboto', sans-serif;
+    color: var(--font-color-dark);
+    box-shadow: 10px 8px 10px 0px rgba(0, 0, 0, 0.9), 0 0px 0px 0 rgba(27, 28, 27, 0.9);
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+
+}
+.match-info{
+    display: flex;
+    width: 500px;
+    justify-content: center; 
+    color: orange;
+    text-shadow: 3px 8px 3px  rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+}
+
+.footer {
+    flex: 1 auto;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    border: 0px solid white;
+    width: 100%;
+    max-width: 500px;
+    gap: 10px;
+    padding-bottom: 40px;
+}
+
+.new-game, .start-game {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    text-shadow: 3px 3px 3px  rgba(0, 0, 0, 0.5);
+
+    border: 1px solid white;
+
+    max-width: 150px;
+    height: 35px;
+    width: 100%;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--font-color-dark);
+    border-radius: 5px;
+    padding: 5px 20px;
+    box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.9), 0 0px 0px 0 rgba(27, 28, 27, 0.9);
+    
+}
+
+
+.new-game:hover, .start-game:hover {
+    background-color: var(--hilite-color-dark); 
+
+    width: 100%;
+    max-width: 151px;
+    height: 36px;
+    margin-top: -1px;
+    margin-left: -1px;
+}
+
+.new-game:active, .start-game:active {
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.9), 0 0px 0px 0 rgba(27, 28, 27, 0.9);
+    
+    transform: translateY(2px) translateX(2px);
+}
+
+
+/* the container that will house the game container. the game container should be centered and responsive
+ shrink from desktop to mobile.*/
+.main-container {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;  /* center the game cotaniner*/
+    align-items: center; 
+    
+    width: 500px;
+    height: 500px;
+    margin-bottom: 15px;
+
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.9), 0 0px 0px 0 rgba(27, 28, 27, 0.9);
+
+    background-color: var(--main-bg-color-dark);
+}
+
+.game-container {
+    background-color: var(--game-bg-color-dark);
+    border: 1px solid white;
+    height: 314px; 
+    width: 314px;
+}
+
+.game-board {
+    display: flex;
+    flex-flow: row wrap;
+    /* a very meek shadow */
+    box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.4), 0 0px 0px 0 rgba(27, 28, 27, 0.19);
+}
+
+
+.intro-container {    
+    text-align:center;    
+    margin: 30px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 300px;
+    text-shadow: 3px 3px 3px  rgba(0, 0, 0, 0.5);
+
+}
+.intro {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    padding: 10px;
+    color:rgb(211, 140, 9);
+}
+
+.square {
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: 0px 0px 0px  rgba(0, 0, 0, 0.5);
+    font-size: 98px;
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid white;
+    height: 104px;
+    width: 104px; box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.6), 0 0px 0px 0 rgba(27, 28, 27, 0.9);
+   
+}
+
+.square:hover {
+    text-shadow: 8px 8px 4px  rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* CSS FOr Modal */
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 80px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    /*overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+    font-family: 'Roboto', sans-serif;   
+  }
+    .modal-content-container {
+        display: flex;
+        position: relative;
+        background-color:  var(--bg-color-dark);
+        margin: auto;
+        padding: 0;
+        border: 2px solid gray;
+        width: 400px;
+        height: 225px;
+        box-shadow: 10px 10px 10px 10px rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+        border-radius: 10px;
+    }
+    .modal-content {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+
+        border: 1px solid var(--font-color-dark);
+        flex: 1 auto;
+        margin: 5px;
+        border-radius: 5px;
+    }  
+
+    .close-container {
+        display:flex;
+        justify-content: space-between;
+        height: 30px;
+        border: 0px solid gray;
+    
+      }      
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        } 
+
+      .modal-header {
+        line-height: 39px;
+        padding-left: 10px;
+        font-size: 22px;
+        color: var(--font-color-dark)
+      }
+      
+      /* The Close Button */
+      .close {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        color: white;
+        font-size: 34px;
+        font-weight: bold;
+        border: 0px dotted gray;
+        margin-top: 10px;
+        margin-right: 5px;
+        cursor: pointer;
+      }
+
+      .form-container {
+        border: 1px solid gray;
+        flex: 1 auto;
+        display:flex;
+        flex-direction: column;
+        margin-top:10px;
+
+      }
+
+      .player-container {
+        display:flex;
+        flex-direction: column;
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top:10px;
+      }
+
+      
+      .button-container {
+        display:flex;
+        flex: 0 auto;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 10px;
+        width: 100%; 
+        margin-top: 15px;       
+      }
+
+      #create{        
+        margin-right: 20px;
+      }
+      #cancel, #create{
+        border: 1px solid gray;
+        padding: 5px 20px;
+        border-radius: 5px;
+        color: var(--font-color-dark);
+        cursor:pointer
+
+      }
+
+      input[type=text] {
+        width: 100%;
+        border-radius: 5px;
+        height: 25px;
+        padding-left: 10px;
+      }
+
+      label {
+        color: var(--font-color-dark);
+        margin-bottom: 5px;
+        font-size: 14px;
+      }
+      
+      .tooltip-bot-info {
+        visibility: hidden;
+        background-color: white;
+        color: black;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 5px;
+        font-size: 14px;
+        
+        position: absolute;
+        z-index: 1;
+        top: 160px;
+        left: 50%;
+        margin-left: -150px;
+        border: 1px solid gray;
+      }
+      
+    .tooltip-bot-info::after {
+        content: "";
+        position: absolute;
+        bottom: 100%;
+        left: 10%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color:   transparent transparent white transparent;
+    }  
+
+    /* Add Animation */
+    @-webkit-keyframes animatetop {
+        from {top:-300px; opacity:0} 
+        to {top:0; opacity:1}
+    }    
+    @keyframes animatetop {
+        from {top:-300px; opacity:0}
+        to {top:0; opacity:1}
+    } 
+
+
+
+/* apply these rules for tablet and mobile*/
+/* if the screen is tablet*/
+/*@media screen and (max-width: 800px) {
+    .main-container {
+        width: 500px;
+        height: 500px;
+    }    
+
+    .game-container {
+        height: 314px; 
+        width: 314px;
+    }
+    .square {
+         font-size: 110px;  
+        border: 1px solid white;
+        height: 104px;
+        width: 104px;
+    }
+
+    .header {    
+        width: 500px;
+    }
+    .modal-content-container {
+    
+        width: 350px;
+        height: 365px;
+    }    
+}*/
+
+
+/* if the screen is mobile*/
+@media screen and (max-width: 415px) {
+    .main-container {
+        width: 300px;
+        height: 300px;
+    }   
+     .game-container {
+        height: 254px; 
+        width: 254px;
+    }
+    .square {
+        font-size: 85px;  
+        border: 1px solid white;
+        height: 84px;
+        width: 84px;
+    }
+    .header {    
+        width: 300px;
+        margin-bottom: 5px;
+    }
+    .modal-content-container {
+    
+        width: 320px;
+        height: 225px;
+    }    
+
+    .match-info{   
+        width: 300px;
+        margin-bottom: 5px;
+    }
+}
