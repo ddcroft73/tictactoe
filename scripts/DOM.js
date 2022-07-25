@@ -1,5 +1,6 @@
 
 
+const intro = document.querySelector('.intro-container');
 const modal = document.getElementById("modal");
 const startGame = document.getElementById("start-game");
 const span = document.getElementsByClassName("close")[0];
@@ -27,7 +28,7 @@ newGame.addEventListener('click', function(){
     // start a new game of a previous match
     if (match) {
         match.newGame();
-        gameScore.updateMatch();
+        //gameScore.updateMatch();
     }
 });
 
@@ -38,10 +39,11 @@ newGame.addEventListener('click', function(){
 //show
 startGame.addEventListener('click', () => {
     // see if the intro is there. if so remove it.
-    removeIntro();
-    
-    modal.style.display = "block"
+    removeIntro();    
+    modal.style.display = "block";
+    // Was the board hidden due to  cancel, or removed?
     gameBoard.drawBoard();
+
 });
 
 // close button
@@ -78,6 +80,8 @@ toolTipBotInfo.addEventListener('mouseenter', () => {
 /** event listeners for modal actioin buttons */
 cancel.addEventListener('click', () => {
     modal.style.display = "none";
+    gameBoard.hideBoard();
+
 });
 
 create.addEventListener('click', () => {
@@ -85,7 +89,7 @@ create.addEventListener('click', () => {
         one: playerOneName.value,
         two: playerTwoName.value
     };
-
+    
     initMatch(playersNames);
     playerOneName.value = '';
     playerTwoName.value = '';

@@ -10,6 +10,7 @@
 
 
 // capitilize the first word of all words in an object
+// this is useless.
 function capitalizeAll(obj) {    
     for (let item in obj) {
         obj[item] = obj[item].replace(/\w\S*/g, (w) => (w.replace(/^\w/, (c) => c.toUpperCase())));
@@ -22,9 +23,11 @@ function removeIntro(){
     const gameBoardDiv = document.querySelector('.game-board');
     const nodeList = document.querySelectorAll('.intro-container');
     if (nodeList.length > 0){
-        gameBoardDiv.removeChild(nodeList[0]);
+        nodeList[0].style.display = 'none';
+        //gameBoardDiv.removeChild(nodeList[0]);
     }
 }
+
 
 // plays sounds for X and O symbols
 function playSound(clip) {
@@ -40,6 +43,7 @@ function playSound(clip) {
 }
 
 // splits a string into an array
+// just found out I could just string.split()...
 function strToArray(string) {
     let array = []
 

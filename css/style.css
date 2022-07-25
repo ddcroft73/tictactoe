@@ -85,12 +85,13 @@ body {
 }
 .header {
     display: flex;
-    flex: 1;
+    flex: 1 auto;
     width: 500px;
     height: 50px;
     border: 0px solid white;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     gap: 10px;
+    margin-top: 50px;
     
 }
 
@@ -106,7 +107,7 @@ body {
     color: var(--font-color-dark);
     box-shadow: 10px 8px 10px 0px rgba(0, 0, 0, 0.9), 0 0px 0px 0 rgba(27, 28, 27, 0.9);
     border-radius: 5px;
-    text-shadow: 3px 8px 3px  rgba(0, 0, 0, 0.5);
+    text-shadow: 3px 3px 3px  rgba(0, 0, 0, 0.9);
 }
 
 .score-name-one {
@@ -138,7 +139,7 @@ body {
     width: 500px;
     justify-content: center; 
     color: orange;
-    text-shadow: 3px 8px 3px  rgba(0, 0, 0, 0.5);
+    text-shadow: 3px 3px 3px  rgba(0, 0, 0, 0.9);
     font-size: 18px;
 }
 
@@ -158,7 +159,7 @@ body {
     display: flex;
     justify-content: center; 
     align-items: center;
-    text-shadow: 3px 3px 3px  rgba(0, 0, 0, 0.5);
+    text-shadow: 3px 3px 3px  rgba(0, 0, 0, 0.9);
 
     border: 1px solid white;
 
@@ -172,7 +173,7 @@ body {
     color: var(--font-color-dark);
     border-radius: 5px;
     padding: 5px 20px;
-    box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.9), 0 0px 0px 0 rgba(27, 28, 27, 0.9);
+    box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.9), 0 0px 0px 0 rgba(27, 28, 27, 0.9);
     
 }
 
@@ -185,12 +186,15 @@ body {
     height: 36px;
     margin-top: -1px;
     margin-left: -1px;
+    box-shadow: 10px 10px 10px 0px rgba(0, 0, 0, 0.9), 0 0px 0px 0 rgba(27, 28, 27, 0.9);
+    transform: translateY(-1px) translateX(-1px);
 }
+
 
 .new-game:active, .start-game:active {
     box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.9), 0 0px 0px 0 rgba(27, 28, 27, 0.9);
     
-    transform: translateY(2px) translateX(2px);
+    transform: translateY(1px) translateX(1px);
 }
 
 
@@ -214,9 +218,10 @@ body {
 
 .game-container {
     background-color: var(--game-bg-color-dark);
-    border: 1px solid yellow;
+    border: 1px solid rgb(156, 123, 61);
     height: 314px; 
     width: 314px;
+    
 }
 
 .game-board {
@@ -250,7 +255,7 @@ body {
     font-size: 98px;
     font-weight: 600;
     text-align: center;
-    border: 1px solid orange;
+    border: 1px solid rgb(156, 123, 61);
     height: 104px;
     width: 104px; box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.6), 0 0px 0px 0 rgba(27, 28, 27, 0.9);
    
@@ -317,6 +322,8 @@ body {
             color: #000;
             text-decoration: none;
             cursor: pointer;
+
+            transform: rotate(540deg);
         } 
 
       .modal-header {
@@ -369,16 +376,22 @@ body {
         margin-top: 15px;       
       }
 
-      #create{        
+      #cancel{        
         margin-right: 20px;
       }
+
       #cancel, #create{
+        visibility: visible;
         border: 1px solid gray;
         padding: 5px 20px;
         border-radius: 5px;
         color: var(--font-color-dark);
         cursor:pointer
+        
+      }
 
+      #cancel:hover, #create:hover {
+        color: black;
       }
 
       input[type=text] {
@@ -436,7 +449,7 @@ body {
 
 /* apply these rules for tablet and mobile*/
 /* if the screen is tablet*/
-/*@media screen and (max-width: 800px) {
+/*@media screen and (max-width: 375px) {
     .main-container {
         width: 500px;
         height: 500px;
