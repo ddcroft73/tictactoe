@@ -150,9 +150,9 @@ let gameScore = (() => {
 
     const _displayScore = () => {
         let text1 =
-            `<span class="score-name-one">${playerOne.name}</span>&nbsp; [ ${pOne} ]`;
+            `<span class="score-name-one">${playerOne.name}:</span>&nbsp;&nbsp;  <span class="score">${pOne}</span> `;
         let text2 =
-            `<span class="score-name-two">${playerTwo.name}</span>&nbsp; [ ${pTwo} ]`;
+            `<span class="score-name-two">${playerTwo.name}:</span>&nbsp;&nbsp;  <span class="score">${pTwo}</span> `;
         scorePlayer1.innerHTML = text1;
         scorePlayer2.innerHTML = text2;
       };
@@ -190,25 +190,13 @@ let gameScore = (() => {
         // sets the players names in the game.
         setPlayerNames: (playerOne, playerTwo) => {
             let text1 =
-                `<span class="score-name-one">${playerOne}</span>&nbsp; [ ${pOne} ]`;
+                `<span class="score-name-one">${playerOne}</span>&nbsp;  ${pOne} `;
             let text2 =
-                `<span class="score-name-two">${playerTwo}</span>&nbsp; [ ${pTwo} ]`;
+                `<span class="score-name-two">${playerTwo}</span>&nbsp;  ${pTwo} `;
 
             scorePlayer1.innerHTML = text1;
             scorePlayer2.innerHTML = text2;
           },
-        /*// updates any changes to the matches.
-        updateMatch: () => {
-            let text;
-            if (matchCnt === 0) {
-                text = `Match: 1   Game: 0`;
-              } else {
-                text = `Match: ${matchCnt}   Game: ${match.gameCnt()}`;
-              }
-            //const matchInfo = document.querySelector('.match-info');
-           // matchInfo.textContent = text;
-           
-          },*/
         // update the scores in the game
         updateScores: player => {
             // which player?
@@ -270,7 +258,6 @@ const createPlayer = (name, type, weapon) => {
                 if (row.includes(move)) {
                     cnt++;
                     if (cnt === 3) {
-                        console.log(row)
                         res = true;
                       }
                   }

@@ -110,13 +110,18 @@ body {
     text-shadow: 3px 3px 3px  rgba(0, 0, 0, 0.9);
 }
 
+
+
 .score-name-one {
-    color: yellow;
     font-weight:bold;
 }
 .score-name-two {
-    color: orange;
     font-weight:bold;
+}
+
+.score {
+    color: rgb(225, 255, 0);;
+
 }
 
 .match-container {
@@ -163,7 +168,7 @@ body {
 
     border: 1px solid white;
 
-    max-width: 150px;
+    max-width: 245px;
     height: 35px;
     width: 100%;
 
@@ -182,7 +187,7 @@ body {
     background-color: var(--hilite-color-dark); 
 
     width: 100%;
-    max-width: 151px;
+    max-width: 246px;
     height: 36px;
     margin-top: -1px;
     margin-left: -1px;
@@ -517,5 +522,13 @@ body {
     .score-playertwo {
         font-size:14px;
     }
-
+    .new-game, .start-game {
+        max-width:150px;
+    }
+    .new-game:hover, .start-game:hover {
+        background-color: var(--hilite-color-dark); 
+    
+        width: 100%;
+        max-width: 151px;
+    }
 }
