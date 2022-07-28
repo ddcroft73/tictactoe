@@ -95,7 +95,7 @@ body {
     
 }
 
-.score-playerone, .score-playertwo {
+.score-playerone, .score-playertwo, .player-tie {
     display: flex;
     justify-content: center; 
     align-items: center;
@@ -107,21 +107,14 @@ body {
     color: var(--font-color-dark);
     box-shadow: 10px 8px 10px 0px rgba(0, 0, 0, 0.9), 0 0px 0px 0 rgba(27, 28, 27, 0.9);
     border-radius: 5px;
-    text-shadow: 3px 3px 3px  rgba(0, 0, 0, 0.9);
-}
-
-
-
-.score-name-one {
+    text-shadow: 3px 3px 13px  rgba(0, 0, 0, 0.9);
     font-weight:bold;
 }
-.score-name-two {
-    font-weight:bold;
-}
+
+
 
 .score {
-    color: rgb(225, 255, 0);;
-
+    color: rgb(225, 255, 0);
 }
 
 .match-container {

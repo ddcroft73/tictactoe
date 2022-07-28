@@ -13,7 +13,8 @@ const cancel = document.querySelector('#cancel');
 const create = document.querySelector('#create');
 
 const scorePlayer1 = document.querySelector('.score-playerone');
-const scorePlayer2 = document.querySelector('.score-playertwo');
+const scorePlayer2 = document.querySelector('.score-playertwo');  //
+const playerTie = document.querySelector('.player-tie');
 
 (() =>{
     // counter style some of the shadow game container.

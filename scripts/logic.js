@@ -147,14 +147,16 @@ let gameScore = (() => {
 
     let pOne = 0;
     let pTwo = 0;
+    let tie = 0;
 
     const _displayScore = () => {
-        let text1 =
-            `<span class="score-name-one">${playerOne.name}:</span>&nbsp;&nbsp;  <span class="score">${pOne}</span> `;
-        let text2 =
-            `<span class="score-name-two">${playerTwo.name}:</span>&nbsp;&nbsp;  <span class="score">${pTwo}</span> `;
-        scorePlayer1.innerHTML = text1;
-        scorePlayer2.innerHTML = text2;
+        let _playerOne = `<span class="score-name-one">${playerOne.name}:</span>&nbsp; <span class="score">${pOne}</span> `;
+        let _playerTwo = `<span class="score-name-two">${playerTwo.name}:</span>&nbsp;  <span class="score">${pTwo}</span> `;
+        let tieGame = `<span class="score-name-one"> Tie Games: <span class="score">&nbsp;&nbsp;${tie}</span></span> `;
+        scorePlayer1.innerHTML = _playerOne;
+        scorePlayer2.innerHTML = _playerTwo;
+        playerTie.innerHTML = tieGame;
+
       };
 
     const _setTurn = player => {
@@ -190,9 +192,9 @@ let gameScore = (() => {
         // sets the players names in the game.
         setPlayerNames: (playerOne, playerTwo) => {
             let text1 =
-                `<span class="score-name-one">${playerOne}</span>&nbsp;  ${pOne} `;
+                `<span class="score-name-one">${playerOne}:</span>&nbsp;   <span class="score">${pOne}</span> `;
             let text2 =
-                `<span class="score-name-two">${playerTwo}</span>&nbsp;  ${pTwo} `;
+                `<span class="score-name-two">${playerTwo}:</span>&nbsp;   <span class="score">${pOne}</span> `;
 
             scorePlayer1.innerHTML = text1;
             scorePlayer2.innerHTML = text2;
@@ -202,6 +204,7 @@ let gameScore = (() => {
             // which player?
             if (player === 'X') pOne++;
             if (player === 'O') pTwo++;
+            if (player === 'tie') tie++;
             _displayScore();
           },
         selectPlayer: player => {
@@ -286,7 +289,7 @@ const createPlayer = (name, type, weapon) => {
                     match.nextRound(weapon);
                   } else if (_totalMoves === 9 && !winner) {
                     match.tieGame();
-                    match.nextRound(weapon);
+                    match.nextRound('tie');
                   }
               }            
           },
