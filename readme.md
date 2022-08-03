@@ -16,11 +16,5 @@ Again I have tried to seperate my logic into several modules:
 
 
 
-### A few small bugs. 
-- Sometimes on the first round a winner is not detected. 
-- Need to finish developing the "win" screen
-  - the winning pieces will flash 3 times.
-- Need to make a spinning modal that screams "Tie" when a tie.
-
 ### AI
-I have started developing the AI. I am going to try not to use a premade algorythm. I think I can make up my own, or I'm going to try. So far the structure seems to fit in as expected and I seem to have a good start.
+I am hanging back on the AI. Yeh maybe Im wussing out but there is a much more desirable project I need to start.

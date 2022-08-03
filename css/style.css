@@ -111,8 +111,6 @@ body {
     font-weight:bold;
 }
 
-
-
 .score {
     color: rgb(225, 255, 0);
 }
@@ -262,6 +260,15 @@ body {
 .square:hover {
     text-shadow: 8px 8px 4px  rgba(0, 0, 0, 0.5);
 }
+
+
+/* class added to the squres to denote winners*/
+.win {
+    background-color: white;
+    border: 1px solid white;
+    text-shadow: 8px 8px 4px  rgba(0, 0, 0, 0.5);
+}
+
 
 
 

@@ -29,8 +29,7 @@ const createPlayers = players => {
         playerTwo = createPlayer(players.two, 'person', 'O');
     }
 
-    gameScore.setPlayerNames(playerOne.name, playerTwo.name)
-    //gameScore.updateMatch();
+    gameScore.setPlayerNames(playerOne.name, playerTwo.name);
   };
 
 // game Board object
@@ -105,8 +104,14 @@ let gameBoard = (() => {
             square.style.display = `block`
           });
         console.log(' hide intro and show board. ');
-      }
+      };
 
+    // removes the winning squares class name from the previous winning cells  
+    const _resetBoard = () => {
+        boardArray.forEach( square => {
+            square.classList = 'square';
+          });
+      };
 
     return {
         drawBoard: () => {
@@ -135,10 +140,11 @@ let gameBoard = (() => {
             movesMade = [];
           },
 
-        boardArray,
+        resetBoard: () => _resetBoard(),
         hideBoard: () => _hideBoard(),
         showBoard: () => _showBoard(), 
-        movesMade
+        movesMade,  
+        boardArray
       };
   })();
 
@@ -152,7 +158,7 @@ let gameScore = (() => {
     const _displayScore = () => {
         let _playerOne = `<span class="score-name-one">${playerOne.name}:</span>&nbsp; <span class="score">${pOne}</span> `;
         let _playerTwo = `<span class="score-name-two">${playerTwo.name}:</span>&nbsp;  <span class="score">${pTwo}</span> `;
-        let tieGame = `<span class="score-name-one"> Tie Games: <span class="score">&nbsp;&nbsp;${tie}</span></span> `;
+        let tieGame = `<span class="score-name-one"> Ties: <span class="score">&nbsp;&nbsp;${tie}</span></span> `;
         scorePlayer1.innerHTML = _playerOne;
         scorePlayer2.innerHTML = _playerTwo;
         playerTie.innerHTML = tieGame;
@@ -212,14 +218,6 @@ let gameScore = (() => {
           },
         resetPlayers: () => _originalColors(),
 
-        // get the pOne score
-        get getPOne() {
-            return this.pOne;
-          },
-        // get the pTwo score
-        get getPTwo() {
-            return this.pTwo;
-          }
       };
 
   })();
@@ -233,19 +231,33 @@ const createPlayer = (name, type, weapon) => {
         bot = createAI();
       }
 
-    const boastWin = player => {
+    const boastWin = (player, winningMoves) => {
         // split the combo into an array
         // const comboArray = strToArray(combo);
         // make the winning combo bliink 3 times
         // disable the mouse  while showing;
         disablePointer(3300);
-        console.log(`Winnner: ${player} `);
-      }
+        console.log(`Winnner: ${player} Winning cells: ${winningMoves} `);
+        
+        // for each squre that is in the win, add te class name "win"
+        gameBoard.boardArray.forEach( cell => {
+             // if the cell is in the winning array, 
+             // add the class name "win" so the cell takes on the attributes of a win
+             winningMoves.forEach( move => {
+                console.log(move)
+               if (move == cell.getAttribute('data-index')) {
+                    cell.classList.add('win');
+                 }
+               });
+          });
+
+      };
 
     // each player will do its own win check
     const checkForWin = () => {
         let cnt = 0;
-        let res = false;
+        let winningCells;
+
         let winsCombo = [
             [0, 1, 2],
             [3, 4, 5],
@@ -261,13 +273,14 @@ const createPlayer = (name, type, weapon) => {
                 if (row.includes(move)) {
                     cnt++;
                     if (cnt === 3) {
-                        res = true;
+                        // return the winning combo
+                        winningCells = row;
                       }
                   }
               });
             cnt = 0;
           });
-        return res;
+        return winningCells;
       };
 
     return {
@@ -285,7 +298,7 @@ const createPlayer = (name, type, weapon) => {
             if (_moves.length >= 3) {
                 const winner = checkForWin();
                 if (winner) {
-                    boastWin(name)
+                    boastWin(name, winner)
                     match.nextRound(weapon);
                   } else if (_totalMoves === 9 && !winner) {
                     match.tieGame();
@@ -309,9 +322,11 @@ const createMatch = () => {
     let _totalMoves = 0;
 
     const _newGame = () => {
+        // remove any winning class
+        gameBoard.resetBoard();
+        gameScore.selectPlayer(0); // X always goes first
         // make sure an actual game has started so the games variable isn't
         // incremented falsely      
-        gameScore.selectPlayer(0); // X always goes first
         if (_gameStarted()) {
             _gameCnt++;          
             playerOne.clear();
@@ -324,7 +339,6 @@ const createMatch = () => {
 
     // returns true if the game has started.
     const _gameStarted = () => {
-        let res = true
         for (let i = 0; i < gameBoard.boardArray.length; i++) {
             if (gameBoard.boardArray[i].textContent != '') {
                 return true;

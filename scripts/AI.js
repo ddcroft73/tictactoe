@@ -7,9 +7,19 @@ const createAI = () => {
 
     console.log('Bot initiated.')
     // given the data on the board, try to make the best move
-    
+
     const calculateMove = () => {
         let array = [];
+
+        //think
+        // is the game over?
+        // is this the first move?
+        //can i win with this move?
+        // is my opponet about to win?
+        // look for a fork.
+        
+        // need to know, the state of the board
+
         // whats on the board;
         gameBoard.boardArray.forEach((square) => {
             array.push(square.textContent)
