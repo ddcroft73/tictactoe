@@ -263,7 +263,7 @@ body {
 
 
 /* class added to the squres to denote winners*/
-.win {
+.square.win {
     background-color: white;
     border: 1px solid white;
     text-shadow: 8px 8px 4px  rgba(0, 0, 0, 0.5);

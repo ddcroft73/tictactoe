@@ -33,7 +33,7 @@ const createPlayers = players => {
   };
 
 // game Board object
-let gameBoard = (() => {
+const gameBoard = (() => {
 
     let boardArray = [];       // DOM access to the cells of the game
     let movesMade = [];        // moves in play
@@ -149,7 +149,7 @@ let gameBoard = (() => {
   })();
 
 // object to track and display the score
-let gameScore = (() => {
+const gameScore = (() => {
 
     let pOne = 0;
     let pTwo = 0;
@@ -216,8 +216,7 @@ let gameScore = (() => {
         selectPlayer: player => {
            _highlightPlayer(player); 
           },
-        resetPlayers: () => _originalColors(),
-
+        resetPlayers: () => _originalColors()
       };
 
   })();
@@ -244,7 +243,6 @@ const createPlayer = (name, type, weapon) => {
              // if the cell is in the winning array, 
              // add the class name "win" so the cell takes on the attributes of a win
              winningMoves.forEach( move => {
-                console.log(move)
                if (move == cell.getAttribute('data-index')) {
                     cell.classList.add('win');
                  }
